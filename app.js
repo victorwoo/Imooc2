@@ -9,6 +9,8 @@ app.set('view engine', 'jade');
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'bower_components')))
 
+app.locals.pretty = true;
+
 // index page
 app.get('/', function(req, res) {
     res.render('index', {
@@ -46,7 +48,7 @@ app.get('/movie/:id', function(req, res) {
     res.render('detail', {
         title: 'imooc 详情页',
         movie: {
-            doctor: '何塞*帕蒂利亚',
+            doctor: '何塞·帕迪里亚',
             country: '美国',
             title: '机械战警',
             year: 2014,
