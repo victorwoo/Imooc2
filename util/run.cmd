@@ -6,4 +6,4 @@ cd ..
 start util\mongod.cmd
 start util\mongo.cmd
 start node-inspector
-start nodemon app --debug
+start nodemon --debug app
