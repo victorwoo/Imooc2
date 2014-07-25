@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'bower_components')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.locals.pretty = true;
 
@@ -188,6 +188,22 @@ app.get('/admin/list', function(req, res) {
         });
     })
 });
+
+// list delete movie
+app.delete('/admin/list/:id', function(req, res) {
+    var id = req.params.id;
+
+    if (id) {
+        Movie.remove({_id: id}, function(err, movie) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json({success: 1});
+            }
+        });
+    }
+});
+
 
 app.listen(port);
 console.log('imooc started on port ' + port);
